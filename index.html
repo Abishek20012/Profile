@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="./../CSS/Navbar_Project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+}
+nav{
+    height: 50px;
+    width: 100%;
+    background-image: linear-gradient(to right , rgb(246, 7, 210) ,red);
+}
+nav .logo{
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-left: 30px;
+    line-height: 50px;
+}
+nav ul{
+   list-style: none;
+   float: right;
+   margin-right: 30px;
+   top: 50px;
+  
+}
+nav ul li{
+    display: inline-block;
+    margin:0 20px ;
+    line-height: 50px;
+    padding: 0 10px;
+}
+nav ul li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding: 10px 5px;
+    text-decoration: none;
+    position: relative;
+}
+nav ul li a::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    transition: .3s all;
+
+}
+nav ul li:hover a::before{
+    width: 100%;
+}
+.menu{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    display: none;
+    padding-top: 12px;
+    cursor: pointer;
+    
+}
+.menu .list{
+    width: 30px;
+    height: 4px;
+    border-radius: 20px;
+    background-color: #fff;
+    display: block;
+    transition: 0.3s all;
+}
+.menu .list:nth-child(1){
+    transform: translateY(-5px);
+    width: 25px;
+}
+.menu .list:nth-child(3){
+    transform: translateY(5px);
+    width: 15px;
+}
+.menu.toggle .list:nth-child(1){
+    transform: translateY(0) rotate(320deg);
+    width: 30px;
+}
+.menu.toggle .list:nth-child(3){
+    transform: translateY(0) rotate(45deg);
+    width: 30px;
+}
+
+.menu.toggle .list:nth-child(2){
+    display: none;
+}
+section.body{
+    
+    /* position: absolute;
+    top: 50px; */
+    height: calc(100vh - 50px);
+    width: 100%;
+   background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(./bg.jpg);
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   display: flex;
+
+}
+section.body .bodycontent-left{
+    width: 50%;
+    position: relative;
+
+}
+.bodycontent-left{
+  
+   align-items: center;
+   justify-content: center;
+   display: flex;
+   padding: 0 20px;
+}
+.bodycontent-left .text h2{
+font-size: 50px;
+color: #fff;
+margin-bottom: 30px;
+
+}
+.bodycontent-left .text p{
+    font-size: 18px;
+    color: #fff;
+
+}
+.bodycontent-left .btn-box{
+    margin-top: 20px;
+    display: flex;
+   
+    gap: 20px;
+}
+.bodycontent-left .btn-box .btn{
+border: none;
+outline: none;
+background: none;
+padding: 15px 20px;
+cursor: pointer;
+font-weight: bold;
+}
+.bodycontent-left .btn-box .btn1{
+    position: relative;
+    background: transparent;
+    border: 2px solid #fff ;
+    color: #fff;
+transition: 0.5s all;
+overflow: hidden;
+z-index: 4;
+  
+}
+.bodycontent-left .btn-box .btn1 span{
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    background-image: linear-gradient(to right , rgb(246, 7, 210) ,red);
+    transition: 1s all;
+    z-index: -4;
+}
+.bodycontent-left .btn-box .btn1:hover span{
+    left: 0;
+}
+.bodycontent-left .btn-box .btn2{
+    background:transparent;
+    padding: 15px 45px;
+    position: relative;
+    z-index: 4;
+    overflow: hidden;
+    color: #fff;
+    border: 2px solid #fff;
+
+}
+.bodycontent-left .btn-box .btn2 span{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    background-image: linear-gradient(to right , rgb(246, 7, 210) ,red);
+    transition: 1s all;
+    z-index: -4;
+}
+.bodycontent-left .btn-box .btn2:hover span{
+    right: -100%;
+    
+}
+.icons{
+    position: absolute;
+    bottom: 20px;
+    padding: 20px;
+    left: 20px;
+}
+.icons ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+.icons ul li{
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+display: flex;
+cursor: pointer;
+transition: .5s ease-in-out;
+}
+.icons ul li:hover{
+    transform: translateY(-20px);
+}
+.icons ul li a{
+    line-height: 50px;
+    margin: auto;
+    color: black;
+  
+}
+
+section.body .bodycontent-right{
+    width: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ 
+}
+section.body .bodycontent-right .bgImg{
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  
+   
+}
+section.body .bodycontent-right img{
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+section.body .bodycontent-right .bgImg .cardtext{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    transition: 0.5s all;
+
+   
+}
+section.body .bodycontent-right .bgImg .cardtext h2 ,p {
+    color: #fff;
+    
+}
+section.body .bodycontent-right .bgImg:hover .cardtext{
+    left: 0;
+}
+
+.footer{
+    padding: 50px 0;
+    background-color: black;
+   
+}
+.footer .footer-container{
+    width: 90%;
+    margin: auto;
+    display: flex;
+  
+    justify-content: center;
+}
+.footer .footer-container .footer-content{
+   width: 33.33%;
+   flex-wrap: wrap;
+}
+.footer .footer-container .footer-content h2{
+    color: #fff;
+    font-weight: 500px;
+    font-size: 20px;
+    margin-bottom: 10px;
+} 
+.footer .footer-container .footer-content p{
+    margin-top: 10px;
+}
+.footer .footer-container .footer-content:nth-child(2){
+    text-align: center;
+}
+.footer .footer-container .footer-content:nth-child(2) li{
+    padding: 4px 0;
+}
+.footer .footer-container .footer-content:nth-child(2) li a{
+    color: #fff;
+    padding: 0 5px;
+    text-decoration: none;  
+    position: relative;
+
+}
+.footer .footer-container .footer-content:nth-child(2) li a::before{
+position: absolute;
+content: '';
+background-color: rgb(249, 9, 249);
+height: 3px;
+width: 0;
+bottom: -5px;
+left: 0;
+transition: all .5s;
+}
+.footer .footer-container .footer-content:nth-child(2) li:hover a::before{
+    width: 100%;
+}
+.footer .footer-container .footer-content:nth-child(3) li{
+    display: inline-block;
+    background-color: black;
+    border: 2px solid rgb(249, 9, 249);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 10px;
+   
+}
+.footer .footer-container .footer-content:nth-child(3) li a{
+color: #bbb;
+display: block;
+
+}
+.footer .footer-container .footer-content:nth-child(3) li:hover a{
+    
+}
+.footer .footer-container .footer-content:nth-child(3) li a:hover{
+    color: #ffffff;
+    transform: scale(1.2);
+  
+    
+}
+
+@media  screen and (max-width:750px) {
+    nav ul{
+        position: fixed;
+        top:50px;
+        left: 0;
+    left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color:transparent;
+        backdrop-filter: blur(10px);
+        transition: 1s all;
+        z-index: 9;
+    }
+    nav ul li{
+        display: block;
+        margin: 0;
+        margin-top: 20px;
+        text-align: center;
+        padding: 0;
+    }
+    .menu{
+        display: block;
+    }
+   ul.slider{
+    transition: 1s all;
+left: 0;
+   }
+   nav ul li a::before{
+    background-image: linear-gradient(to right , rgb(246, 7, 210) ,red);
+   }
+   .body{
+    flex-direction: column;
+    gap: 20px;
+
+   }
+   section.body .bodycontent-left{
+    width: 100%;
+    margin-bottom: 20px;
+   }
+   section.body .bodycontent-right {
+    width: 100%;
+    
+}
+.bodycontent-left .btn-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+   .icons {
+    display: none;
+}
+section.body .bodycontent-right .bgImg {
+    width: 250px;
+    height: 250px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.bodycontent-left .text h2{
+    font-size: 30px;
+    margin: 0;
+    margin: 20px 0;
+}
+.footer .footer-container {
+    flex-direction: column;
+}
+.footer .footer-container .footer-content:nth-child(2){
+    text-align: start;
+}
+.footer .footer-container .footer-content:nth-child(3) ul{
+   display: inline-flex;
+}
+    
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <label for="" class="logo">Logo</label>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blogs</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>
+        <div class="menu">
+            <span class="list"></span>
+            <span class="list"></span>
+            <span class="list"></span>
+        </div>
+    </nav>
+    <!-- Body section -->
+    <section class="body">
+   <div class="bodycontent-left">
+    <div class="text">
+        <h2>Hello I'm Arockia Abishek</h2>
+        <p>hey I'm frontend developer and  I have solid knowladge in fontend developing technology like html ,css and java script 
+        i'm looking a good opportunity
+        </p>
+     
+        <div class="btn-box">
+            <button class="btn btn1" download><span></span>Download CV</button> 
+            <button class="btn btn2"><span></span>Proejct</button>
+
+        </div>
+
+    </div>
+    <div class="icons">
+        <ul>
+            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+        </ul>
+    </div>
+   </div>
+   <div class="bodycontent-right">
+<div class="bgImg">
+    <img src="./Card.jpg" width="300px" >
+    <div class="cardtext">
+        <h2>Project</h2>
+        <p>this is my first Project</p>
+    </div>
+</div>
+   </div>
+    </section>
+
+    <!-- footer Section -->
+  <div class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <h2>Contact us</h2>
+            <p>Email: arofrank2001@gamil.com</p>
+            <p>Phone: +91 6381245194</p>
+            <p>Address: mettu Street, Sengadu ,<br> Villupuram.</p>
+        </div>
+
+        <div class="footer-content">
+            <h2>Quick Link</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Project</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-content">
+            <h2>Follow us</h2>
+           
+            <ul>
+                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+    
+</body>
+<script>
+    const menu = document.querySelector('.menu');
+    const ul = document.querySelector('nav ul');
+    const list =document.querySelector('.menu .list');
+    menu.addEventListener('click' , ()=>{
+        console.log('clicked');
+        ul.classList.toggle('slider');
+        menu.classList.toggle('toggle');
+    })
+</script>
+</html>
